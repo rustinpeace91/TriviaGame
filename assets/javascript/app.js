@@ -91,10 +91,11 @@ var triviaGame = {
 var questionArray = [];
 var counter = 0;
 var maxQuestions = 3;
-var interval = 2000;
+var interval = 10000;
 var correctGuesses;
 var wrongGuesses;
 var lateGuesses;
+var currentQuestion;
 
 function initializeGame(){
     questionArray = Object.keys(triviaGame.questions);
@@ -102,44 +103,58 @@ function initializeGame(){
 }
 
 //TODO: get game to display questions in HTML before working on the timer part;
-function displayQuestion(question){
+function displayQuestion(){
     $("#question").empty();
-    $("#question").append("<p>" + question + "</p>");
+    $("#answers").empty();
+    $("#question").append("<p>" + currentQuestion.questionText + "</p>");
+    for(i = 0; i < currentQuestion.answers.length; i++){
+        $("#answers").append("<button class = 'option' data-number = " + i + "> " + currentQuestion.answers[i].text + "</button>");
+    }
+
+    $(".option").on("click", function(){
+        var answerRef = $(this).data("number");
+        //REMOVE THESE//
+        if(currentQuestion.answers[answerRef].correct){
+            console.log("Correct!");
+            correctGuesses++;
+        } else {
+            console.log("wrong answer m8")
+            wrongGuesses++;
+        }
+        //REMOVE THESE//
+    })
 };
 
 //the basic question generation mechanism
 function startGame() {
 
-        //selects a random number between 0 and the question array length
- 
-        //puts that random number in the question array, refers to that property of the questions object to access text
+            //first checks if the counter has reached the max amount of questions
+            if(counter < maxQuestions){
+                //if not it creates a new counter to select a question by picking a random number between 0 and the question length 
+                var questionCounter = Math.floor(Math.random() * (questionArray.length));
+                //inputs that question counter into the questionArray key, then inputs that key into the trivia.questions object to retrieve the text of a question
+                currentQuestion = triviaGame.questions[questionArray[questionCounter]];
+                //logs: REMOVE THESE
+                console.log(currentQuestion);
+                console.log(questionCounter);
+                console.log(questionArray);
+                //REMOVE THESE 
+                displayQuestion();
 
-        //removes that question from the array so it can't be selected again
-
-
-            
-            if(counter >= maxQuestions){
-                setTimeout(function() {
-                    console.log("nope");
-                    }, 2000)
-            } else {
-            var questionCounter = Math.floor(Math.random() * (questionArray.length));
-            var selection = triviaGame.questions[questionArray[questionCounter]].questionText;
-            console.log(selection);
-            console.log(questionCounter);
-            console.log(questionArray);
-            displayQuestion(selection);
-            questionArray.splice(questionCounter, 1); 
+                questionArray.splice(questionCounter, 1); 
                 if(counter <= maxQuestions) {
                     counter++;
                     setTimeout(startGame, interval);
-
                 } 
 
+            } else {
+                console.log("nope");
             }    
 
      //displays question after a certain time
-
-
-
 }
+
+$("#startgame").on("click", function(){
+    initializeGame();
+    startGame();
+});
