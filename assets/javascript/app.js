@@ -89,32 +89,57 @@ var triviaGame = {
 //throws the question properties (q1,q2) into an array for selecting
 
 var questionArray = [];
-
+var counter = 0;
+var maxQuestions = 3;
+var interval = 2000;
+var correctGuesses;
+var wrongGuesses;
+var lateGuesses;
 
 function initializeGame(){
     questionArray = Object.keys(triviaGame.questions);
+    counter = 0;
 }
 
 //TODO: get game to display questions in HTML before working on the timer part;
 function displayQuestion(question){
-
+    $("#question").empty();
+    $("#question").append("<p>" + question + "</p>");
 };
 
 //the basic question generation mechanism
 function startGame() {
-    while(questionArray.length > 0) {
-        //selects a random number between 0 and the question array length
-        var counter = Math.floor(Math.random() * (questionArray.length));
-        //puts that random number in the question array, refers to that property of the questions object to access text
-        var selection = triviaGame.questions[questionArray[counter]].questionText;
-        //removes that question from the array so it can't be selected again
-        //REMOVE SOON 
-        console.log(selection);
-        console.log(counter);
-        console.log(questionArray);
-        //REMOVE SOON 
-        //displays question after a certain time
-        questionArray.splice(counter, 1);
 
-    }
+        //selects a random number between 0 and the question array length
+ 
+        //puts that random number in the question array, refers to that property of the questions object to access text
+
+        //removes that question from the array so it can't be selected again
+
+
+            
+            if(counter >= maxQuestions){
+                setTimeout(function() {
+                    console.log("nope");
+                    }, 2000)
+            } else {
+            var questionCounter = Math.floor(Math.random() * (questionArray.length));
+            var selection = triviaGame.questions[questionArray[questionCounter]].questionText;
+            console.log(selection);
+            console.log(questionCounter);
+            console.log(questionArray);
+            displayQuestion(selection);
+            questionArray.splice(questionCounter, 1); 
+                if(counter <= maxQuestions) {
+                    counter++;
+                    setTimeout(startGame, interval);
+
+                } 
+
+            }    
+
+     //displays question after a certain time
+
+
+
 }
