@@ -97,6 +97,13 @@ var triviaGame = {
     initialize : function() {
        triviaGame.questionArray = Object.keys(triviaGame.questions);
        triviaGame.counter = 0;
+       triviaGame.timer.reset;
+       triviaGame.correctGuesses = 0,
+       triviaGame.wrongGuesses = 0,
+       triviaGame.lateGuesses = 0,
+       $("#game-board div").show();
+       $("#game-board p").show();
+       $(".end-text").hide();
     },
 
     displayQuestion: function (){
@@ -143,10 +150,12 @@ var triviaGame = {
     },
 
     endScreen: function (){
-        $("#game-board").empty();
-        $("#game-board").append("<p>Correct Guesses: " + triviaGame.correctGuesses + "</p>");
-        $("#game-board").append("<p>Wrong Guesses: " + triviaGame.wrongGuesses + "</p>");
-        $("#game-board").append("<p>Times Up: " + triviaGame.lateGuesses + "</p>");
+        $("#game-board div").hide();
+        $("#game-board p").hide();
+        $(".end-text").show();
+        $("#correct").html("<p>Correct Guesses: " + triviaGame.correctGuesses + "</p>");
+        $("#incorrect").html("<p>Wrong Guesses: " + triviaGame.wrongGuesses + "</p>");
+        $("#timesup").append("<p>Times Up: " + triviaGame.lateGuesses + "</p>");
     },
 
     startGame: function() {
@@ -165,7 +174,7 @@ var triviaGame = {
     
 
     timer : {
-        countdown : 7,
+        countdown : 20,
         timeup: false,
         start : function() {
             countdownID = setInterval(function(){
@@ -176,7 +185,7 @@ var triviaGame = {
                     triviaGame.timer.reset();
                     $("#answers").html("<p>Time's Up</p>")
                     triviaGame.lateGuesses++;
-                    setTimeout(triviaGame.startGame, 2000);
+                    setTimeout(triviaGame.startGame, 4000);
         
                 };
    
@@ -186,8 +195,8 @@ var triviaGame = {
         },
         
         reset: function() {
-            clearInterval(countdownID);;
-            triviaGame.timer.countdown = 7;
+            clearInterval(countdownID);
+            triviaGame.timer.countdown = 20;
             $("#timer").empty();
             triviaGame.timer.timeup = false;
         }
