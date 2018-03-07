@@ -21,7 +21,7 @@ var triviaGame = {
     questionArray : [],
     //counter that keeps track of how many questions have been answered
     counter : 0,
-    maxQuestions : 3,
+    maxQuestions : 10,
     interval : 2000,
     intervalLong : 3000,
     correctGuesses : 0,
@@ -78,27 +78,186 @@ var triviaGame = {
         },
 
         "q3": {
-            questionText:"you got mail is the catchphrase for what popular 90s technology?",
-            correctAnswer: "AOL (Who Cares?)",
+            questionText:"Which of the following platforms does NOT have a Final Fantasy game?",
+            correctAnswer: "Nintendo 64",
             answers: [
                 {
-                    text: "AOL",
+                    text: "Xbox 360",
+                    correct:false
+                },
+                {
+                    text: "PC",
+                    correct:false
+                },
+                {
+                    text: "Nintendo 64",
                     correct:true
                 },
                 {
-                    text: "Myspace",
+                    text: "Super Nintendo",
+                    correct:false
+                },
+
+
+            ]
+        },
+        "q4": {
+            questionText:"This FPS game, released in 1996, features a fowl mouthed, tank top wearing anti-hero.  It also suffered an awful reboot in 2011",
+            correctAnswer: "Duke Nukem 3D",
+            answers: [
+                {
+                    text: "Duke Ellington 3D",
                     correct:false
                 },
                 {
-                    text: "IM",
+                    text: "Buck Smack'em 3D",
                     correct:false
                 },
                 {
-                    text: "Who Cares?",
+                    text: "Duke Nukem 3D",
+                    correct:true
+                },
+                {
+                    text: "Dave Mustaine 3D",
+                    correct:false
+                },
+            ]
+        },
+        "q5": {
+            questionText:"Which multiplayer game featured the announcer who shouted: 'First Blood', 'Double Kill!', 'M-M-M-MONSTER KILL'",
+            correctAnswer: "Unreal Tournament",
+            answers: [
+                {
+                    text: "Mortal Kombat",
+                    correct:false
+                },
+                {
+                    text: "Unreal Tournament",
+                    correct:true
+                },
+                {
+                    text: "Quake III",
+                    correct:false
+                },
+                {
+                    text: "Half Life: Deathmatch",
+                    correct:false
+                },
+            ]
+        },
+        "q6": {
+            questionText:"Which of the following platforms did NOT have a version of DOOM on them?",
+            correctAnswer: "Sega Dreamcast",
+            answers: [
+                {
+                    text: "Nintendo 64",
+                    correct:false
+                },
+                {
+                    text: "Xbox 360",
+                    correct:false
+                },
+                {
+                    text: "Gameboy Advance",
+                    correct:false
+                },
+                {
+                    text: "Sega Dreamcast",
                     correct:true
                 },
             ]
-        }
+        },
+        "q7": {
+            questionText:"The following item is the first weapon in the iconic 1997 game, Half Life?",
+            correctAnswer: "Crowbar",
+            answers: [
+                {
+                    text: "Crowbar",
+                    correct:true
+                },
+                {
+                    text: "Baseball Bat",
+                    correct:false
+                },
+                {
+                    text: "Pistol",
+                    correct:true
+                },
+                {
+                    text: "Chainsaw",
+                    correct:false
+                },
+            ]
+        },
+        "q8": {
+            questionText:"___________ does what Nintendon't",
+            correctAnswer: "Genesis",
+            answers: [
+                {
+                    text: "Playstation",
+                    correct:false
+                },
+                {
+                    text: "Genesis",
+                    correct:true
+                },
+                {
+                    text: "TurboGrafx 16",
+                    correct:false
+                },
+                {
+                    text: "Xbox",
+                    correct:false
+                },
+            ]
+        },
+
+        "q9": {
+            questionText:"The following was the first game to recieve an M rating",
+            correctAnswer: "Mortal Kombat",
+            answers: [
+                {
+                    text: "DOOM",
+                    correct:false
+                },
+                {
+                    text: "Mortal Kombat",
+                    correct:true
+                },
+                {
+                    text: "Wolfenstein 3D",
+                    correct:false
+                },
+                {
+                    text: "Duke Nukem 3D",
+                    correct:false
+                },
+            ]
+        },
+    
+        "q10": {
+            questionText:"This game, developed by From Software in 1994, is considered a precursor to the Dark Souls franchise",
+            correctAnswer: "King's Field",
+            answers: [
+                {
+                    text: "Diablo",
+                    correct:false
+                },
+                {
+                    text: "Dungeon Hack",
+                    correct:false
+                },
+                {
+                    text: "King's Quest",
+                    correct:false
+                },
+                {
+                    text: "King's Field",
+                    correct:true
+                },
+            ]
+        },
+
     },
     
     //resets global variables, hides gameboard, shows ending text
