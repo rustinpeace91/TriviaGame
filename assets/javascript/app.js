@@ -28,7 +28,7 @@ var triviaGame = {
     questions : {
         //maybe use "q1", "q2", for properties and have a questionText for each property
         "q1" : {
-            questionText: "What was the name of DMX's first album?",
+            questionText: "Which of these is NOT a chapter in the first DOOM game?",
             correctAnswer: "It's Dark and Hell is Hot",
             answers: [
                 {
@@ -51,24 +51,24 @@ var triviaGame = {
         },
 
         "q2": {
-            questionText: "The best videogame console of all time (this is an indistputable fact)",
+            questionText: "The Sony Playstation was originally developed as a CD drive addon for which console?",
             correctAnswer: "Sony Playstation (PSX)",
             answers: [
                 {
                     text: "Super Nintendo",
-                    correct:false
+                    correct:true,
                 },
                 {
                     text: "Sega Genesis",
-                    correct:false
+                    correct:false,
                 },
                 {
                     text: "When I was dead broke I couldn't picture this",
-                    correct:false
+                    correct:false,
                 },
                 {
-                    text: "Sony Playstation (PSX)",
-                    correct:true
+                    text: "Neo Geo",
+                    correct:false,
                 },
             ],
         },
@@ -156,6 +156,7 @@ var triviaGame = {
         $("#game-board div").hide();
         $("#game-board p").hide();
         $(".end-text").show();
+        $("#resetgame").show();
         $("#correct").html("<p>Correct Guesses: " + triviaGame.correctGuesses + "</p>");
         $("#incorrect").html("<p>Wrong Guesses: " + triviaGame.wrongGuesses + "</p>");
         $("#timesup").append("<p>Times Up: " + triviaGame.lateGuesses + "</p>");
@@ -217,9 +218,22 @@ var triviaGame = {
 
 
 //the basic question generation mechanism
+$(document).ready(function() {              
+
+    $("#resetgame").hide();
+    $("#start-button").on("click", function(){
+        $("#intro-screen").hide();
+        triviaGame.initialize();
+        triviaGame.startGame();
+    })
+    
+    $("#resetgame").on("click", function(){
+        $("#resetgame").hide();
+
+        triviaGame.initialize();
+        triviaGame.startGame();
+    })
 
 
-$("#startgame").on("click", function(){
-    triviaGame.initialize();
-    triviaGame.startGame();
-})
+
+});

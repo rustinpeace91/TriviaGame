@@ -5,14 +5,41 @@
     text-align: center;
     width: 100%;
 }
+.navbar {
+    margin-bottom:0
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
 
 .navbar-brand {float:none;}
 
 .option{
     display:block;
     margin:auto;
+    margin-top:5px;
 }
 
 .jumbotron {
     text-align:center;
+    min-height:350px;
+}
+
+#start-button{
+    display:block;
+    width:200px;
+    height:34px;
+    background: url("../images/newgame.jpg");
+    margin:auto;
+}
+
+#resetgame{
+    background: url("../images/resetbutton.jpg");
+    width:150px;
+    height:92px;
+}
+
+#intro-image{
+    max-width:600px;
 }

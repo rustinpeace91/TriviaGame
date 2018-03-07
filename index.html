@@ -16,19 +16,23 @@
           <div class="navbar-header">
 
             <div id= "title-container">
-                <a class="navbar-brand " href="#">The Edgy 90s: A Trivia Game</a>
+                <a class="navbar-brand " href="#">90s Gaming Trivia</a>
             </div>
 
           </div>
         </div><!-- /.container-fluid -->
       </nav>
-      <button id = "startgame">Start</button>
+
 
     <div class="jumbotron">
-        
+        <div id = "intro-screen" class = "container-fluid">
+            <img id = "intro-image" src = "assets/images/90sedgelordps1.jpg" >
+            <button id = "start-button"></button>
+        </div>
+
         <div id = "timer-box" ><p>Timer:<span id = "timer"></span></p></div>
 
-        
+
         <div id = "game-board">
         <p>Current Question:</p> 
 
@@ -37,6 +41,7 @@
             <div id = "correct" class = "end-text"></div>
             <div id = "incorrect" class = "end-text"></div>
             <div id = "timesup" class = "end-text"></div>
+            <button id = "resetgame"></button>
         </div>
     </div>
 
