@@ -29,6 +29,7 @@ var triviaGame = {
         //maybe use "q1", "q2", for properties and have a questionText for each property
         "q1" : {
             questionText: "What was the name of DMX's first album?",
+            correctAnswer: "It's Dark and Hell is Hot",
             answers: [
                 {
                     text: "The Shores of Hell",
@@ -51,6 +52,7 @@ var triviaGame = {
 
         "q2": {
             questionText: "The best videogame console of all time (this is an indistputable fact)",
+            correctAnswer: "Sony Playstation (PSX)",
             answers: [
                 {
                     text: "Super Nintendo",
@@ -72,7 +74,8 @@ var triviaGame = {
         },
 
         "q3": {
-            questionText:"you got mail is the catchphrase for what popular 90s technology",
+            questionText:"you got mail is the catchphrase for what popular 90s technology?",
+            correctAnswer: "AOL (Who Cares?)",
             answers: [
                 {
                     text: "AOL",
@@ -137,7 +140,7 @@ var triviaGame = {
                 result = "Correct!";
                 triviaGame.correctGuesses++;
             } else if(triviaGame.currentQuestion.answers[answerRef].correct == false) {
-                result = "Wrong!"
+                result = "Wrong! The Correct Answer is: </br> " + triviaGame.currentQuestion.correctAnswer;
                 triviaGame.wrongGuesses++;
             } 
 
@@ -183,7 +186,7 @@ var triviaGame = {
                 if(triviaGame.timer.countdown <= 0){
                     clearInterval(countdownID);
                     triviaGame.timer.reset();
-                    $("#answers").html("<p>Time's Up</p>")
+                    $("#answers").html("<p>Time's Up!  The Correct Answer is: </br> " + triviaGame.currentQuestion.correctAnswer)
                     triviaGame.lateGuesses++;
                     setTimeout(triviaGame.startGame, 4000);
         
