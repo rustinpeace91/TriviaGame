@@ -374,7 +374,7 @@ var triviaGame = {
         //resets the timer
         reset: function() {
             clearInterval(countdownID);
-            triviaGame.timer.countdown = 20;
+            triviaGame.timer.countdown = 27;
             $("#timer").empty();
             triviaGame.timer.timeup = false;
         }
