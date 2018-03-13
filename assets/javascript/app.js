@@ -181,7 +181,7 @@ var triviaGame = {
                 },
                 {
                     text: "Pistol",
-                    correct:true
+                    correct:false
                 },
                 {
                     text: "Chainsaw",
@@ -323,28 +323,33 @@ var triviaGame = {
         $(".option").on("click", function(){
             var answerRef = $(this).data("number");
             var result = ""
+            var resultGif;
             if(triviaGame.currentQuestion.answers[answerRef].correct){
                 result = "Correct!";
                 triviaGame.correctGuesses++;
+                resultGif = "<img src = 'assets/images/correct.gif' />";
             //takes the data number in the clickable html element and runs it through the answers array, then checks the boolean in each answer to see if it's the correct answer
             //this approach allows multiple correct answers
             } else if(triviaGame.currentQuestion.answers[answerRef].correct == false) {
+
                 result = "Wrong! The Correct Answer is: </br> " + triviaGame.currentQuestion.correctAnswer;
                 triviaGame.wrongGuesses++;
+                resultGif = "<img src = 'assets/images/wrong.gif' />";
             } 
             //resets the timer 
             triviaGame.timer.reset();
             $("#answers").html("<p>" + result +"</p>")
-            //runs startGame again after a certain amount of time
-            setTimeout(triviaGame.startGame, triviaGame.interval);
 
+            //runs startGame again after a certain amount of time
+            setTimeout(triviaGame.startGame, triviaGame.intervalLong);
+            $("#answers").append(resultGif);
 
         });
     },
 
     //timer property
     timer : {
-        countdown : 20,
+        countdown : 27,
         timeup: false,
         start : function() {
             countdownID = setInterval(function(){
@@ -358,7 +363,7 @@ var triviaGame = {
                     $("#answers").html("<p>Time's Up!  The Correct Answer is: </br> " + triviaGame.currentQuestion.correctAnswer)
                     triviaGame.lateGuesses++;
                     setTimeout(triviaGame.startGame, triviaGame.interval);
-        
+                    $("#answers").append("<img src = 'assets/images/time.gif'/>");
                 };
    
 

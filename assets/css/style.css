@@ -1,4 +1,23 @@
 
+#answers button{
+    border:solid 2px black;
+    background:yellow;
+    font-size:26px;
+    color:red;
+}
+
+#answers button:hover {
+    background:black;
+}
+
+#timer {
+    font-weight:bold;
+}
+
+#question p {
+    margin-top:8px;
+}
+
 .navbar-header {
     float: left;
     padding: 15px;
